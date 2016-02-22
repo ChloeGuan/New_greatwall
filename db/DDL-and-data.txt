@@ -1,0 +1,66 @@
+-- PATH=$PATH:/Applications/MAMP/Library/bin
+-- export PATH
+-- mysql -h localhost test < DDL-and-data.txt
+-- mysql -u root -p
+-- root root
+-- drop table name_of_table
+
+-- create table
+create table user (
+  ID int NOT NULL AUTO_INCREMENT,
+  user_name varchar(50),
+  first_name varchar(50),
+  last_name varchar(50),
+  password varchar(50),
+  PRIMARY KEY (ID)
+);
+
+-- add sample data
+insert into user (user_name, first_name, last_name, password) values ('lolomg', 'arron', 'ferguson', '123');
+
+-- http://stackoverflow.com/questions/168736/how-do-you-set-a-default-value-for-a-mysql-datetime-column
+create table cart (
+  ID int NOT NULL AUTO_INCREMENT,
+  user_id int NOT NULL,
+  -- 0 = started, 1 = completed
+  state int NOT NULL,
+  time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (ID),
+  -- UPDATE/DELETE CASCADE = allow cascading operation, UPDATE/DELETE RESTRICT = disallow cascading operation
+  FOREIGN KEY (user_id) REFERENCES user(ID) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+insert into cart (user_id, state) values (1, 0);
+insert into cart (user_id, state) values (1, 1);
+
+update cart SET state = 0 WHERE user_id = 1;
+
+create table item (
+  ID int NOT NULL AUTO_INCREMENT,
+  cart_id int NOT NULL,
+  -- stock keeping unit
+  SKU varchar(100) NOT NULL,
+  item_price  numeric(15, 2), -- NOT NULL,
+  quantity int NOT NULL,
+  description varchar(100), -- NOT NULL,
+  PRIMARY KEY (ID),
+  FOREIGN KEY (cart_id) REFERENCES cart(ID) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+insert into item (SKU, cart_id, item_price, quantity, description) values ('sk-2843y', 1, 14.99, 1, 'toaster');
+insert into item (SKU, cart_id, item_price, quantity, description) values ('sk-327623z', 2, 3.99, 2, 'napkins');
+insert into item (SKU, cart_id, item_price, quantity, description) values ('sk-438s3x', 2, 1.99, 5, 'coffee cups');
+
+
+create table product (
+  ID int NOT NULL AUTO_INCREMENT,
+  -- stock keeping unit
+  SKU varchar(100) NOT NULL,
+  item_price  numeric(15, 2) NOT NULL,
+  description varchar(100) NOT NULL,
+  PRIMARY KEY (ID)
+);
+
+insert into product (SKU, item_price, description) values ('sk-2843y', 14.99, 'toaster');
+insert into product (SKU, item_price, description) values ('sk-327623z', 3.99, 'napkins');
+insert into product (SKU, item_price, description) values ('sk-438s3x', 1.99, 'coffee cups');
