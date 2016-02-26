@@ -19,7 +19,7 @@ class ShowProductsAction {
     public function getProducts() {
 
         $responseType = $this->params->getValue('responseType');
-        $response = $this->productManager->getAllProducts();
+        $response = $this->productManager->listProducts();
         if($responseType === "JSON") {
             Utils::setResponseTypeToJSON();
             return $response;
@@ -28,8 +28,11 @@ class ShowProductsAction {
             Utils::setResponseTypeToJSON();
             $html = "";
             foreach($response as $product) {
+                $name=$product['name'];
+                $type=$product['type'];
+                $image=$product['url'];
                 $sku = $product['SKU'];
-                $itemPrice = $product['item_price'];
+                $itemPrice = $product['price'];
                 $description = $product['description'];
                 $html .= "<tr>
                 <td>$description</td>

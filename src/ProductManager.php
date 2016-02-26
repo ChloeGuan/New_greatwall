@@ -1,16 +1,9 @@
 <?php
 
-/*
-require_once('./DBConnector.php');
-require_once('./Messages.php');
+//require_once('./DBConnector.php');
 
+//$um = new ProductManager();
 
-$pm = new ProductManager();
-$data = $pm->getAllProducts();
-echo json_encode($data, JSON_FORCE_OBJECT);
-
-var_dump(Messages::getMessages());
-*/
 // Facade
 class ProductManager {
 
@@ -20,11 +13,24 @@ class ProductManager {
         $this->db = DBConnector::getInstance();
     }
 
-    public function getAllProducts() {
-        $sql = "SELECT SKU, item_price, description FROM product";
-        $products = $this->db->query($sql);
-        return $products;
+    public function listProducts() {
+        $sql = "SELECT name, type, url, total_num, avail_num, SKU, price, description FROM product";
+        $rows = $this->db->query($sql);
+        return $rows;
     }
+
+    public function findProduct($SKU) {
+        $params = array(":sku" => $SKU);
+        $sql = "SELECT SKU, price, description FROM product WHERE SKU = :sku";
+
+        $rows = $this->db->query($sql, $params);
+        if(count($rows) > 0) {
+            return $rows[0];
+        }
+
+        return null;
+    }
+
 
 }
 

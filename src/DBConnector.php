@@ -5,7 +5,7 @@
 //$db = DBConnector::getInstance();
 //var_dump($db);
 
-//$stuff = $db->select("select * from user;");
+//$stuff = $db->query("select * from user;");
 //var_dump($stuff);
 
 //$conn = new PDO("mysql:host=localhost;dbname=test", 'root', '');
@@ -13,6 +13,20 @@
 
 // http://code.tutsplus.com/tutorials/design-patterns-the-singleton-pattern--cms-23073
 // Singleton
+
+/*
+$db = DBConnector::getInstance();
+
+$sql = "insert into student (first_name, last_name) values ('Darth', 'Nader')";
+$id = $db->getTransactionID($sql);
+
+echo "<p>Last id of student addes is $id ... which we can use to grab the last record created:</p>";
+$student = $db->query("select * from student where id = $id");
+
+var_dump($student);
+
+echo Messages::getAllMessagesHTMLList();
+*/
 class DBConnector {
 
     private $dbName = null;
@@ -39,8 +53,8 @@ class DBConnector {
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         } catch(PDOException $e) {
-
-            Messages::addMessage("errors", $e->getMessage());
+            //echo $e->getMessage();
+            Messages::addMessage("error", "DBConnector contructor: " . $e->getMessage());
         }
 
     }
@@ -71,8 +85,6 @@ class DBConnector {
         try {
             if($this->conn != null) {
 
-                //$numberOfAffectedRows = $this->conn->exec($sql);
-                //return $numberOfAffectedRows;
                 $this->conn->beginTransaction();
                  $this->conn->exec($sql);
                 // the id of the last inserted row into a table
@@ -82,15 +94,16 @@ class DBConnector {
 
             } else {
                 // connection failed, add that to the messages
-                Messages::addMessage("error", "PDO Connection was null.");
-                $this->conn->rollBack();
+                Messages::addMessage("error",
+                    "DBConnector 'getTransactionID' failure, PDO Connection was null.");
                 return -1;
             }
             return -1;
 
         } catch(PDOException $e) {
             $this->conn->rollBack();
-            Messages::addMessage("error", $e->getMessage());
+            Messages::addMessage("error", "DBConnector 'getTransactionID' failure, "
+                . $e->getMessage());
         }
     }
 
@@ -104,14 +117,16 @@ class DBConnector {
 
             } else {
                 // connection failed, add that to the messages
-                Messages::addMessage("error", "PDO Connection was null.");
+                Messages::addMessage("error",
+                    "DBConnector 'affectRows' failure, PDO Connection was null.");
                 return 0;
             }
             return 0;
 
         } catch(PDOException $e) {
 
-            Messages::addMessage("error", $e->getMessage());
+            Messages::addMessage("error", "DBConnector 'affectRows' failure, "
+                . $e->getMessage());
         }
     }
 
@@ -128,13 +143,15 @@ class DBConnector {
 
             } else {
                 // connection failed, add that to the messages
-                Messages::addMessage("error", "PDO Connection was null.");
+                Messages::addMessage("error",
+                    "DBConnector 'query' failure, PDO Connection was null.");
             }
             return array();
 
         } catch(PDOException $e) {
 
-            Messages::addMessage("error", $e->getMessage());
+            Messages::addMessage("error", "DBConnector 'query' failure, "
+                . $e->getMessage());
 
         }
 

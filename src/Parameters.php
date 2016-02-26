@@ -10,11 +10,23 @@ class Parameters {
 
         if($method === "GET") {
 
+            // error checking:
+            if(!isset($_GET)) {
+              $values['error'] = 'No $_GET found';
+              return $values;
+            }
+
             foreach ($_GET as $key => $value){
                 $this->values[$key] = $value;
             }
 
         } else if ($method === "POST") {
+
+            // error checking:
+            if(!isset($_POST)) {
+              $values['error'] = 'No $_POST found';
+              return $values;
+            }
 
             foreach ($_POST as $key => $value){
                 $this->values[$key] = $value;
@@ -25,7 +37,7 @@ class Parameters {
     }
 
     public function getValue($key) {
-        if(isset($key)) {
+        if(isset($this->values[$key])) {
             return $this->values[$key];
         }
         return null;

@@ -21,6 +21,16 @@ class Messages {
         return self::$messageList;
     }
 
+    public static function getAllMessagesHTMLList() {
+        $html = "<ul>";
+        foreach(self::$messageList as $msg) {
+            $html .= "<li>[" .$msg->type . "] " .  $msg->text . "</li>";
+        }
+        $html .= "</ul>";
+
+        return $html;
+    }
+
 }
 
 class Message {
