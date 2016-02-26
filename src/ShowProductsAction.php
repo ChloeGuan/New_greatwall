@@ -35,10 +35,11 @@ class ShowProductsAction {
                 $itemPrice = $product['price'];
                 $description = $product['description'];
                 $html .= "<tr>
-                <td>$description</td>
-                <td><input data-sku-qty='$sku' type='number' value='1' min='1' max='10' step='1'/></td>
-                <td>$itemPrice</td>
-                <td><input data-sku-add='$sku' type='button' value='Add'/></td>
+                 <td>$name
+                <td>$description
+                <td><input data-sku-qty='$sku' type='number' value='1' min='1' max='10' step='1'/>
+                <td>$itemPrice
+                <td><input data-sku-add='$sku' type='button' value='Add'/>
                 </tr>";
             }
             return $html;

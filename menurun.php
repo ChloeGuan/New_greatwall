@@ -1,7 +1,7 @@
 <?php
 
 
-    require_once('./libs/PHPTAL-1.3.0/PHPTAL.php');
+    require_once('libs/PHPTAL-1.3.0/PHPTAL.php');
 
     // render the whole page using PHPTAL
 
