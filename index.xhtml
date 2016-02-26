@@ -12,11 +12,14 @@
     </navReplace>
 
     <div>
-
-
-
-      <div id="profileContainer">
-        <div id="userProfile" tal:condition="exists:profile">
+    
+	<div id="homediv">
+    <div id="homepicdiv">
+	<img class="homepic" src="img/homepagepic.jpg" alt=""/>
+    </div>
+    
+<div id="profileContainer">
+    <div id="userProfile" tal:condition="exists:profile">
           <h2>User Profile</h2>
           <span tal:content="profile/user_name"></span>
           <span tal:content="profile/first_name"></span>
@@ -79,12 +82,13 @@
 
             <input id="password" type="password" placeholder="password" name="password"/><br/><br/>
 
-            <input id="loginbutton" type="button" value="Login"/>
-            <input id="resetLoginForm" type="reset" value="Reset"/>
+            <input id="loginbutton" class="button4" type="button" value="Login"/>
+            <input id="resetLoginForm" class="button4" type="reset" value="Reset"/>
 
           </fieldset>
         </form>
 
+      </div>
       </div>
 
 

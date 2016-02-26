@@ -364,3 +364,49 @@ hr.style18 {
     background-color: #CF8F44;
     color: black;
 }
+
+/*///////////////////////////////////////////////////////////home page//////////////////////////////////////////////////////////////////////////////*/
+#homediv{
+	margin-bottom:20px;
+	width:100%;
+	min-width:30%;
+	background-color:#FBEDD5;
+    margin-left: auto;
+    margin-right: auto;
+	padding-bottom:40px;
+	overflow: auto;
+	height:100%;
+}
+
+.homepic{
+	padding-top:50px;
+	padding-left:5%;
+	width:70%;
+	min-width:25%;
+	height:auto;
+	padding-bottom:30px;
+	display:block;
+	float:left;
+}
+
+#loginFormContainer{
+	float:right;
+	display:block;
+	padding-right:5%;
+}
+#loginForm{
+	width:100%;
+	padding-top:50px;
+	padding-right:5%;
+	margin-right:20px;
+	margin-bottom:20px;
+	display:block;
+		
+}
+
+
+
+
+
+
+
