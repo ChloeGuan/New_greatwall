@@ -21,7 +21,7 @@ class ProductManager {
 
     public function findProduct($SKU) {
         $params = array(":sku" => $SKU);
-        $sql = "SELECT SKU, price, description FROM product WHERE SKU = :sku";
+        $sql = "SELECT name, SKU, price, description FROM product WHERE SKU = :sku";
 
         $rows = $this->db->query($sql, $params);
         if(count($rows) > 0) {

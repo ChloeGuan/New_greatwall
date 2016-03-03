@@ -49,13 +49,11 @@
                     // sku, qty, date
                     var sku = item['sku'];
                     var qty = item['qty'];
-                    var date = item['date'];
                     var price = item['price'];
                     var desc = item['desc'];
                     var subtotal = parseFloat(Math.round((qty * price) * 100) / 100).toFixed(2);
 
-                    var item = "<li data-item-sku='" + sku + "' data-item-qty='" + qty + "' data-item-date='"
-                        + date + "'>" + desc + " " + qty + " x $" + price + " = " + subtotal
+                    var item = "<li data-item-sku='" + sku + "' data-item-qty='" + qty + "'>" + desc + " " + qty + " x $" + price + " = " + subtotal
                         + " <input type='button' data-remove-button='remove' value='X'/></li>";
                     shoppingCartList.append(item);
 

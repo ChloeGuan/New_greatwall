@@ -1,43 +1,37 @@
 <?php
 
-// load all scripts into memory
 require_once('init.php');
 loadScripts();
 
-
-    // Business Delegate
-
-    $data = array();
+    $data = array("status" => "not set!");
 
     if(Utils::isGET()) {
+        $pm = new ProductManager();
+        $rows = $pm->listProducts();
 
-        if(Utils::isAJAX()) {
-            $parameters = new Parameters("GET");
-            $showProductsAction = new ShowProductsAction();
-            $showProductsAction->setParameters($parameters);
-
-            $response = $showProductsAction->getProducts();
-
-            if($response) {
-
-                $data = array("status" => "success", "products" => $response);
-
-            } else {
-                // error message
-                $data = array("status" => "errors", "msg" => Messages::getMessages());
-            }
-
-        } else {
-
-            $data = array("status" => "error", "msg" => "AJAX Required.");
-
+        $html = "";
+        foreach($rows as $row) {
+            $sku = $row['SKU'];
+            $price = $row['price'];
+            $desc = $row['description'];
+            $type = $row['type'];
+            $name = $row['name'];
+            $url = $row['url'];
+            $html .= "<tr>
+                        <td data-sku-name='$sku'><span>$type</span><br>$name<br><img src='$url' height='90px' width='100px'></td>
+                         <td data-sku-desc='$sku'>$desc</td>
+                        <td><input data-sku-qty='$sku' type='number' value='1' min='1' max='10' step='1'/></td>
+                        <td data-sku-price='$sku'>$price</td>
+                        <td><input data-sku-add='$sku' type='button' value='Add'/></td>
+                      </tr>";
         }
-
+        echo $html;
+        return;
 
     } else {
         $data = array("status" => "error", "msg" => "Only GET allowed.");
-    }
 
+    }
 
     echo json_encode($data, JSON_FORCE_OBJECT);
 

@@ -6,10 +6,10 @@
     // render the whole page using PHPTAL
 
     // finally, create a new template object
-    $template = new PHPTAL('menu.php');
+    $template = new PHPTAL('products.php');
 
     // now add the variables for processing and that you created from above:
-    $template->page_title = "Index Page with PHPTAL";
+    $template->page_title = "Menu & Order Online";
 
 
     // execute the template

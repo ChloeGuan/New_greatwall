@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<link href="../css/style.css" rel="stylesheet" type="text/css"/>
-<link href="../css/responsive.css" rel="stylesheet" type="text/css"/>
+<link href="./css/style.css" rel="stylesheet" type="text/css"/>
+
   <!-- View -->
  <headReplace metal:use-macro="/templating/head.xhtml/meta_head">
   </headReplace>
@@ -14,23 +14,20 @@
 	
     <div id="menudiv">
 <h1 class="menuT"> MENU & ORDER ONLINE</h1>
-        
-    <div id="shoppingdiv">
-<h1 class="shoppingT">Shopping Cart</h1>
+        <div id="shoppingdiv">
       <div id="shoppinginfo">
 <hr class="style18"></hr>
         <table id="productTable">
-
-          <thead>
+            <thead>
             <tr class="shoppingT">
-                <th>Image</th>
                 <th>Name</th>
               <th>Description</th>
               <th>Quantity</th>
               <th>Price</th>
               <th>Add</th>
             </tr>
-          </thead>
+                </thead>
+
           <tbody id="productslist">
             <!-- THIS SECTION WILL BE REPLACED BY SERVER GENERATED ROWS -->
 
@@ -53,7 +50,7 @@
 <br></br>
 <br></br>
       </div>
-    </div>
+</div>
 
 </div>
 
