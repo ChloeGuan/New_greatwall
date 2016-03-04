@@ -44,6 +44,7 @@ $(document).ready(function() {
                      */
 
                 } else {
+                    document.location = "menurun.php";
                     // you're in, show profile
                     console.log(returnedData['user']);
                     // THIS SECTION HAS TO BE THE SAME AS index.html, LINE 21
