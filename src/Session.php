@@ -1,8 +1,4 @@
 <?php
-
-//require_once('./Messages.php');
-
-// Secure Session Manager
 class Session {
 
     public static function init() {

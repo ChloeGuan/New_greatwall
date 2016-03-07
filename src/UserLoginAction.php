@@ -1,11 +1,4 @@
 <?php
-
-//require_once('./UserManager.php');
-//require_once('./Session.php');
-//require_once('./Messages.php');
-//require_once('./Utils.php');
-
-// Command
 class UserLoginAction {
 
     private $userManager;

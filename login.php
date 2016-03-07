@@ -1,8 +1,4 @@
 <?php
-
-// Business Delegate
-
-// load all scripts into memory
 require_once('init.php');
 loadScripts();
 

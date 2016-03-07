@@ -1,6 +1,6 @@
 <?php
 
-//require_once('./DBConnector.php');
+//require_once('DBConnector.php');
 
 //$um = new ProductManager();
 
@@ -15,6 +15,11 @@ class ProductManager {
 
     public function listProducts() {
         $sql = "SELECT name, type, url, total_num, avail_num, SKU, price, description FROM product";
+        $rows = $this->db->query($sql);
+        return $rows;
+    }
+        public function insertProducts($sku, $qty) {
+        $sql = 'INSERT INTO product (name, type, url, total_num, avail_num, SKU, price, description) VALUES ("$sku","$qty")';
         $rows = $this->db->query($sql);
         return $rows;
     }
@@ -33,5 +38,9 @@ class ProductManager {
 
 
 }
+
+$productManger = new ProductManager;
+$productManger->insertProducts($_POST['sku'],$_POST['qty']);
+echo json_encode($productManger);
 
 ?>

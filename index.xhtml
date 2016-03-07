@@ -30,7 +30,15 @@
       
 
       <div id="updatebuttom" tal:condition="php: Session::get('isLoggedIn')">
-		<button class="button5">Update</button>
+          <input data-sku-name="$sku" type="text" placeholder="type product name" id="product_name" name="product_name" />
+          <input data-sku-type="$sku" type="text" placeholder="type product type" id="product_type" name="product_type" />
+          <input data-sku-desc="$sku" type="text" placeholder="type product description" id="product_desc" name="product_desc" />
+        <input data-sku-insert="$sku" type="text" placeholder="type product SKU" id="product_sku" name="product_SKU" />
+          <input data-sku-price="$sku" type="text" placeholder="type product price" id="product_price" name="product_price" />
+
+          <input type="number" data-sku-qty="$sku" value="1" step="1" min="1" max="10"/>
+        
+		<button id="update" class="button5">Update</button>
       </div>
 </form>
       <div id="loginFormContainer" tal:condition="php: !Session::get('isLoggedIn')">

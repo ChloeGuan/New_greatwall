@@ -30,7 +30,41 @@
             }
 
             loadProducts();
+      //insert product
+             $("#update").click(function(e) {
+                console.log("Insert product");
+                 var sku = "";
+                e.preventDefault();
+                var product_sku = $("input[data-sku-insert='" + sku + "']").val();
+                var product_qty = $("input[data-sku-qty='" + sku + "']").val();
+                var product_price = $("input[data-sku-price='" + sku + "']").val();
+                var product_desc = $("input[data-sku-desc='" + sku + "']").val();
+                 var product_name = $("input[data-sku-name='" + sku + "']").val();
+                 var product_type = $("input[data-sku-type='" + sku + "']").text();
+                
+                $.ajax({
+                    url: "src/ProductManager.php",
+                    type: "POST",
+                    dataType: 'json',
+                    data: {
+                        sku: product_sku,
+                        qty:product_qty,
+                        price:product_price,
+                        desc:product_desc,
+                        name:product_name,
+                        type:product_type
+                    },
+                    success: function(returnedData) {
+                        console.log("response: ", returnedData);
 
+
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log(jqXHR.statusText, textStatus);
+                    }
+                });
+            });
+      
             // SESSION STORAGE GET ITEMS IF THEY ALREADY EXIST IN SESSION STORAGE
             function loadShoppingCartItems() {
 
