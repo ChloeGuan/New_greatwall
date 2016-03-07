@@ -18,11 +18,11 @@ loadScripts();
             $name = $row['name'];
             $url = $row['url'];
             $html .= "<tr>
-                        <td data-sku-name='$sku'><span>$type</span><br>$name<br><img src='$url' height='90px' width='100px'></td>
-                         <td data-sku-desc='$sku'>$desc</td>
+                        <td data-sku-name='$sku' class='namediv'><h4>$type</h4><br>$name<br><img src='$url' height='90px' width='100px'></td>
+                         <td data-sku-desc='$sku' class='descdiv'>$desc</td>
                         <td><input data-sku-qty='$sku' type='number' value='1' min='1' max='10' step='1'/></td>
                         <td data-sku-price='$sku'>$price</td>
-                        <td><input data-sku-add='$sku' type='button' value='Add'/></td>
+                        <td><input data-sku-add='$sku' type='button' value='Add' class='button5'/></td>
                       </tr>";
         }
         echo $html;
