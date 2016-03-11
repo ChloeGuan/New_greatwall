@@ -437,18 +437,54 @@ padding-right:30%;
     color: black;
 }
 
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) {
-
+#messages{
+	float:right;
+	display:block;
+	width:250px;
 }
 
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) {
-/* Styles */
 
+
+@media only screen and (max-width: 767px) {
+ 	.homepic{
+	float:none;
+	clear:both;
+	margin-left:auto;
+	margin-right:auto;
 }
+#profileContainer{
+	float:none;
+	clear:both;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+}
+#messages{
+	float:none;
+	clear:both;
+	margin-left:auto;
+	margin-right:auto;
+	width:100%;
+}
+}
+
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+    /* portrait phones */
+		.homepic{
+	float:none;
+	clear:both;
+	margin-left:auto;
+	margin-right:auto;
+}
+#profileContainer{
+	float:none;
+	clear:both;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+}
+}
+
 
 
 

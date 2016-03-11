@@ -30,13 +30,13 @@
       
 
       <div id="updatebuttom" tal:condition="php: Session::get('isLoggedIn')">
-          <input data-sku-name="$sku" type="text" placeholder="type product name" id="product_name" name="product_name" />
-          <input data-sku-type="$sku" type="text" placeholder="type product type" id="product_type" name="product_type" />
-          <input data-sku-desc="$sku" type="text" placeholder="type product description" id="product_desc" name="product_desc" />
-        <input data-sku-insert="$sku" type="text" placeholder="type product SKU" id="product_sku" name="product_SKU" />
-          <input data-sku-price="$sku" type="text" placeholder="type product price" id="product_price" name="product_price" />
+          <input data-sku-name="$sku" type="text" placeholder="type product name" id="product_name" name="product_name" /><br></br>
+          <input data-sku-type="$sku" type="text" placeholder="type product type" id="product_type" name="product_type" /><br></br>
+          <input data-sku-desc="$sku" type="text" placeholder="type product description" id="product_desc" name="product_desc" /><br></br>
+        <input data-sku-insert="$sku" type="text" placeholder="type product SKU" id="product_sku" name="product_SKU" /><br></br>
+          <input data-sku-price="$sku" type="text" placeholder="type product price" id="product_price" name="product_price" /><br></br>
 
-          <input type="number" data-sku-qty="$sku" value="1" step="1" min="1" max="10"/>
+          <input type="number" data-sku-qty="$sku" value="1" step="1" min="1" max="10"/><br></br>
         
 		<button id="update" class="button5">Update</button>
       </div>
@@ -66,7 +66,7 @@
 
       </div>
 
-      <div id="messages">
+     <div id="messages">
         <p>Messages:</p>
         <ul id="talMessages" tal:condition="php: count(messages) GT 0">
           <li tal:repeat="msg messages" class="${msg/type}"><span tal:content="msg/text"></span></li>
